@@ -78,3 +78,14 @@ Example:
 ```bash
 mvn test
 ```
+
+## Postman
+
+Import the following collection into Postman:
+
+```text
+postman/User-API.postman_collection.json
+```
+
+Run `Get all users` or `Create user` first to initialize the `userId`
+collection variable used by the PATCH and DELETE requests.
