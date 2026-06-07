@@ -89,3 +89,25 @@ postman/User-API.postman_collection.json
 
 Run `Get all users` or `Create user` first to initialize the `userId`
 collection variable used by the PATCH and DELETE requests.
+
+## Docker
+
+Build the image:
+
+```bash
+docker build -t user-api .
+```
+
+Run the container:
+
+```bash
+docker run --rm -p 8080:8080 --name user-api user-api
+```
+
+Optionally provide a custom AES-256 key:
+
+```bash
+docker run --rm -p 8080:8080 \
+  -e AES_KEY="YOUR_BASE64_32_BYTE_KEY" \
+  --name user-api user-api
+```
