@@ -49,7 +49,7 @@ public class UserService {
                 "+1 55 555 555 55",
                 cryptoService.encrypt("7c4a8d09ca3762af61e59520943dc26494f8941b"),
                 "AARR990101XXX",
-                "01-01-2026 00:00",
+                currentMadagascarTimestamp(),
                 addresses
         ));
 
@@ -60,7 +60,7 @@ public class UserService {
                 "+52 55 1234 5678",
                cryptoService.encrypt("password2"),
                 "BERR980202XXX",
-                "01-01-2026 00:00",
+                currentMadagascarTimestamp(),
                 addresses
         ));
 
@@ -71,7 +71,7 @@ public class UserService {
                 "+52 55 8765 4321",
                 cryptoService.encrypt("password3"),
                 "CARR970303XXX",
-                "01-01-2026 00:00",
+                currentMadagascarTimestamp(),
                 addresses
         ));
     }
@@ -98,9 +98,7 @@ public class UserService {
                 );
         }
 
-        String createdAt = LocalDateTime
-                .now(ZoneId.of("Indian/Antananarivo"))
-                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        String createdAt = currentMadagascarTimestamp();
 
         user.setId(UUID.randomUUID());
         user.setCreatedAt(createdAt);
@@ -256,6 +254,12 @@ public class UserService {
             })
             .toList();
   }
+
+    private String currentMadagascarTimestamp() {
+        return LocalDateTime
+                .now(ZoneId.of("Indian/Antananarivo"))
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+    }
 
    private String getFieldValue(User user, String field) {
         return switch (field) {
